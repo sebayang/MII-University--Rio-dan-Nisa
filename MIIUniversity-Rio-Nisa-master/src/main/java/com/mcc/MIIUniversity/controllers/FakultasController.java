@@ -6,10 +6,10 @@
 package com.mcc.MIIUniversity.controllers;
 
 import com.mcc.MIIUniversity.entities.Fakultas;
-import com.mcc.MIIUniversity.repositories.FakultasRepository;
 import com.mcc.MIIUniversity.services.FakultasService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping; 
@@ -25,10 +25,10 @@ public class FakultasController {
 
     @Autowired
     FakultasService fakultasService;  
-    
+
     @GetMapping("/fakultas")
     public ModelAndView homeFakultas() {
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("tablesFakultas");
         mav.addObject("fakultass", fakultasService.getAll());
         mav.addObject("fakultas", new Fakultas());
         return mav;
@@ -37,17 +37,17 @@ public class FakultasController {
     @PostMapping("/save")
     public ModelAndView save(@Valid Fakultas fakultas) {
         
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/fakultas");
         mav.addObject("fakultass", fakultasService.getAll());
         mav.addObject("fakultas", new Fakultas());
         fakultasService.save(fakultas); 
         return mav; 
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/fakultas/{id}")
     @SuppressWarnings("empty-statement")
     public ModelAndView delete(@PathVariable("id") String id) {
-        ModelAndView mav = new ModelAndView("redirect:/");
+        ModelAndView mav = new ModelAndView("redirect:/fakultas");
         mav.addObject("fakultass", fakultasService.getAll());
         mav.addObject("fakultas", new Fakultas());
         fakultasService.delete(id);

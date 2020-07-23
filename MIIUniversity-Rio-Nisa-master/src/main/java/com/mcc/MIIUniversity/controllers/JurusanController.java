@@ -30,7 +30,7 @@ public class JurusanController {
 
     @GetMapping("")
     public ModelAndView index(Model model) {
-        ModelAndView mav = new ModelAndView("jurusan");
+        ModelAndView mav = new ModelAndView("tablesJurusan");
         mav.addObject("jurusans", jurusanService.getAll());
         mav.addObject("jurusan", new Jurusan());
 
@@ -48,7 +48,7 @@ public class JurusanController {
 
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/jurusan/{id}")
     public ModelAndView delete(@PathVariable("id") String id) {
         ModelAndView mav = new ModelAndView("redirect:/jurusan");
         mav.addObject("jurusans", jurusanService.getAll());
