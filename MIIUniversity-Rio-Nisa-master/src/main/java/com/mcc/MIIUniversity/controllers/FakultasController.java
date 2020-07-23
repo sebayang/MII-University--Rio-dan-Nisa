@@ -26,7 +26,7 @@ public class FakultasController {
     @Autowired
     FakultasService fakultasService;  
     
-    @GetMapping("")
+    @GetMapping("/fakultas")
     public ModelAndView homeFakultas() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("fakultass", fakultasService.getAll());

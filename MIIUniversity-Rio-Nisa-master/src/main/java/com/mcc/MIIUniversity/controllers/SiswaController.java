@@ -32,8 +32,8 @@ public class SiswaController {
      */
     @GetMapping("")
     public ModelAndView index(){
-        ModelAndView mav = new ModelAndView("siswaView");
-        mav.addObject("siswas", siswaService.getAll());
+        ModelAndView mav = new ModelAndView("tables_dynamic");
+        mav.addObject("psiswa", siswaService.getAll());
         mav.addObject("siswa", new Siswa());
 
         return mav;

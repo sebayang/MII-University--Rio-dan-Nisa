@@ -26,14 +26,15 @@ public class SiswaService {
     }
 
     public void delete(Integer id) {
-       siswaRepository.delete(new Siswa(id));
+        siswaRepository.delete(new Siswa(id));
     }
 
     public Siswa save(Siswa siswa) {
-       return siswaRepository.save(siswa);
+        return siswaRepository.save(siswa);
 
     }
-     public Siswa getById(Integer id){
-     return siswaRepository.findById(id).get();
- } 
+
+    public Siswa getById(Integer id) {
+        return siswaRepository.findById(id).get();
+    }
 }

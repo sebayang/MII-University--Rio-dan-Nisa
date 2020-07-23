@@ -6,6 +6,7 @@
     <class>com.mcc.MIIUniversity.entities.Fakultas</class>
     <class>com.mcc.MIIUniversity.entities.Jurusan</class>
     <class>com.mcc.MIIUniversity.entities.Jurusan_1</class>
+    <class>com.mcc.MIIUniversity.entities.User</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3406/miiuniversity?zeroDateTimeBehavior=convert_To_Null"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
