@@ -7,11 +7,10 @@ package com.mcc.MIIUniversity.controllers;
 
 import com.mcc.MIIUniversity.entities.User;
 import com.mcc.MIIUniversity.services.UserService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,4 +47,20 @@ public class UserController {
             return mav;
         } 
     }
+//      ModelAndView mav = new ModelAndView("redirect:/fakultas");
+//        mav.addObject("fakultass", fakultasService.getAll());
+//        mav.addObject("fakultas", new Fakultas());
+//        fakultasService.save(fakultas); 
+//        return mav; 
+  
+    @RequestMapping("/register")
+    public ModelAndView register(@Valid User user) {
+        ModelAndView mav = new ModelAndView("redirect:/register");
+        mav.addObject("users", userService.getAll());
+        mav.addObject("user", new User());
+        userService.saveRegister(user); 
+        System.out.println("Register jalan");
+        return mav;
+    }
+    
 }

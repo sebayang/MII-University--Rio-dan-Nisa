@@ -40,7 +40,9 @@ and open the template in the editor.
             <div>
                 <a class="hiddenanchor" id="signup"></a>
                 <a class="hiddenanchor" id="signin"></a>
-
+              
+                    
+                    
                 <div class="login_wrapper">
                     <div class="animate form login_form">
                         <section class="login_content">
@@ -53,10 +55,12 @@ and open the template in the editor.
                                     <input type="password" id="txtPassowrd" class="form-control" th:field="*{password}" placeholder="Password" required />
                                 </div>
                                 <div>
-                                    <input type="submit" value="Login"> 
+                                    <input type="submit" class="btn btn-primary" value="Login"> 
+                                   
                                 </div> 
                             </form>
-                        </section>
+                        </section>   <p>Not a member? <u><a href="/register" >Register</a></u></p>
+               
                     </div>
 
                     <div id="register" class="animate form registration_form">
@@ -66,9 +70,7 @@ and open the template in the editor.
                                 <div>
                                     <input type="text" class="form-control" placeholder="Username" required="" />
                                 </div>
-                                <div>
-                                    <input type="email" class="form-control" placeholder="Email" required="" />
-                                </div>
+                                
                                 <div>
                                     <input type="password" class="form-control" placeholder="Password" required="" />
                                 </div>

@@ -7,6 +7,7 @@ package com.mcc.MIIUniversity.services;
 
 import com.mcc.MIIUniversity.entities.User;
 import com.mcc.MIIUniversity.repositories.UserRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,13 @@ public class UserService {
     
     public User getById(String username) {
         return userRepository.findById(username).get();
+    }
+    public User saveRegister(User user){
+         
+        return userRepository.save(user);
+
+    }
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

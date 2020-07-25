@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -45,6 +46,25 @@ public class LoginController {
         } else {
             return "redirect:/";
         }
+        
     }
+    @PostMapping("/register")
+ public String newRegister(@ModelAttribute(name = "user") User user, Model model, String username, String password) {
+        user.setUsername(username);
+        user.setPassword(password); 
+         User user1 = userService.getById(username); 
+        if (userService.getLogin(username, password) == true) {
+            if (user1.getType() == 1) {
+                model.addAttribute("psiswa", siswaService.getAll());
+                model.addAttribute("siswa", new Siswa());
+                return "redirect:/siswa";
+            } else {
+                return "redirect:/";
+            }
 
+        } else {
+            return "redirect:/";
+        }
+        
+    }
 }
