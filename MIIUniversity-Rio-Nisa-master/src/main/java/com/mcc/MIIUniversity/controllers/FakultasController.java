@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping; 
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView; 
 
@@ -20,15 +21,24 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Laila
  */
+@RequestMapping("fakultas")
 @RestController
 public class FakultasController {
 
     @Autowired
     FakultasService fakultasService;  
 
-    @GetMapping("/fakultas")
+    @GetMapping("")
     public ModelAndView homeFakultas() {
         ModelAndView mav = new ModelAndView("tablesFakultas");
+        mav.addObject("fakultass", fakultasService.getAll());
+        mav.addObject("fakultas", new Fakultas());
+        return mav;
+    }
+    
+    @GetMapping("user")
+    public ModelAndView user() {
+        ModelAndView mav = new ModelAndView("tablesFakultasSiswa");
         mav.addObject("fakultass", fakultasService.getAll());
         mav.addObject("fakultas", new Fakultas());
         return mav;
@@ -44,7 +54,7 @@ public class FakultasController {
         return mav; 
     }
 
-    @GetMapping("/fakultas/{id}")
+    @GetMapping("{id}")
     @SuppressWarnings("empty-statement")
     public ModelAndView delete(@PathVariable("id") String id) {
         ModelAndView mav = new ModelAndView("redirect:/fakultas");

@@ -5,12 +5,15 @@
  */
 package com.mcc.MIIUniversity.controllers;
 
+import com.mcc.MIIUniversity.entities.Siswa;
 import com.mcc.MIIUniversity.entities.User;
+import com.mcc.MIIUniversity.services.SiswaService;
 import com.mcc.MIIUniversity.services.UserService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +28,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    SiswaService siswaService;
+
     @GetMapping("")
     public ModelAndView homeLogin() {
         ModelAndView mav = new ModelAndView("login");
@@ -33,34 +39,33 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping("/login") 
+    @GetMapping("/showRegister")
+    public ModelAndView homeRegister() {
+        ModelAndView mav = new ModelAndView("register");
+        mav.addObject("user", new User());
+        return mav;
+    }
+
+    @RequestMapping("/login")
     public ModelAndView checkLogin(@ModelAttribute(name = "user") User user) {
         String username = user.getUsername();
         String password = user.getPassword();
-        System.out.println("+++++++++++++++++++++++++SEBELUM IF+++++++++++++++++++++++++++++++++++++");
         if (userService.getLogin(username, password) == true) {
             ModelAndView mav = new ModelAndView("index");
             return mav;
-        } else { 
+        } else {
             ModelAndView mav = new ModelAndView("login");
-            System.out.println("Lewat bawah");
             return mav;
-        } 
+        }
+
     }
-//      ModelAndView mav = new ModelAndView("redirect:/fakultas");
-//        mav.addObject("fakultass", fakultasService.getAll());
-//        mav.addObject("fakultas", new Fakultas());
-//        fakultasService.save(fakultas); 
-//        return mav; 
-  
-    @RequestMapping("/register")
-    public ModelAndView register(@Valid User user) {
-        ModelAndView mav = new ModelAndView("redirect:/register");
-        mav.addObject("users", userService.getAll());
-        mav.addObject("user", new User());
-        userService.saveRegister(user); 
-        System.out.println("Register jalan");
+
+    @GetMapping("/user") 
+    public ModelAndView userSiswa() {
+        ModelAndView mav = new ModelAndView("siswaUser");
+        mav.addObject("siswa", new Siswa());
+        mav.addObject("psiswa", siswaService.getAll());
         return mav;
     }
-    
+
 }

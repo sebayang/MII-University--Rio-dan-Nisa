@@ -37,16 +37,24 @@ public class SiswaController {
         mav.addObject("siswa", new Siswa());
 
         return mav;
-    }  
+    }
+    @GetMapping("user")
+    public ModelAndView user(){
+        ModelAndView mav = new ModelAndView("tables_dynamicSiswa");
+        mav.addObject("psiswa", siswaService.getAll());
+        mav.addObject("siswa", new Siswa());
+
+        return mav;
+    }
     /**
      * controller menyimpan data dari index
      * @return view base url
      */ 
-    @PostMapping("/save")
+    @PostMapping("save")
     public ModelAndView save(@Valid Siswa siswa){
         
         ModelAndView mav = new ModelAndView("redirect:/siswa");
-        mav.addObject("siswas", siswaService.getAll());
+        mav.addObject("psiswa", siswaService.getAll());
         mav.addObject("siswa", new Siswa());
         siswaService.save(siswa);
         return mav;
@@ -54,7 +62,7 @@ public class SiswaController {
     @GetMapping("{id}")
     public ModelAndView deleteRegion(@PathVariable(name = "id") Integer id){
         ModelAndView mav = new ModelAndView("redirect:/siswa");
-        mav.addObject("siswas", siswaService.getAll());
+        mav.addObject("psiswa", siswaService.getAll());
         mav.addObject("siswa", new Siswa());
         siswaService.delete(id);
         return mav;

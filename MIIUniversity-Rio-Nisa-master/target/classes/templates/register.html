@@ -27,7 +27,7 @@ and open the template in the editor.
         <div class="login_wrapper">
                     <div class="animate form register_form">
                         <section class="login_content">
-                            <form th:action="@{/register}" th:object="${user}" method="POST">
+                            <form th:action="@{/checkRegister}" th:object="${user}" method="POST">
                                 <h1>Register Form</h1>
                                 <div>
                                     <input input type="text" id="txtUsername" class="form-control" th:field="*{username}" placeholder="Username"  required />
@@ -36,7 +36,7 @@ and open the template in the editor.
                                     <input type="password" id="txtPassowrd" class="form-control" th:field="*{password}" placeholder="Password" required />
                                 </div>
                                 <div>
-                                      <button class="btn btn-primary submit " href="index.html">Submit</button>
+                                      <button type ="submit" value="Save"  class="btn btn-primary" >Submit</button>
                                    
                                 </div> 
                             </form>

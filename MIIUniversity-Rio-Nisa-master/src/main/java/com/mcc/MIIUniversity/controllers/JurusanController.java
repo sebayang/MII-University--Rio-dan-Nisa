@@ -36,6 +36,15 @@ public class JurusanController {
 
         return mav;
     }
+    
+    @GetMapping("user")
+    public ModelAndView user(Model model) {
+        ModelAndView mav = new ModelAndView("tablesJurusanSiswa");
+        mav.addObject("jurusans", jurusanService.getAll());
+        mav.addObject("jurusan", new Jurusan());
+
+        return mav;
+    }
 
     @PostMapping("/save")
     public ModelAndView save(@Valid Jurusan jurusan) {
@@ -48,7 +57,7 @@ public class JurusanController {
 
     }
 
-    @GetMapping("/jurusan/{id}")
+    @GetMapping("{id}")
     public ModelAndView delete(@PathVariable("id") String id) {
         ModelAndView mav = new ModelAndView("redirect:/jurusan");
         mav.addObject("jurusans", jurusanService.getAll());
