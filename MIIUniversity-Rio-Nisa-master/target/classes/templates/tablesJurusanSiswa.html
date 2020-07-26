@@ -147,12 +147,15 @@
                                                             <tr>
                                                                 <th>ID</th>
                                                                 <th>Jurusan</th> 
+                                                                <th>Fakultas</th> 
                                                             </tr>
                                                         </thead> 
                                                         <tbody>
                                                             <tr th:each ="j: ${jurusans}">
                                                                 <td th:text= "${j.id}">ID</td>
-                                                                <td th:text= "${j.nama}">nama</td>
+                                                                <td th:text= "${j.nama}">nama</td> 
+                                                                <td th:text= "${j.fakultas}">nama</td>
+
      
                                                             </tr>
                                                         </tbody>

@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Laila
+ * @author Gin
  */
 @Entity
 @Table(name = "jurusan")
@@ -28,32 +28,28 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Jurusan.findAll", query = "SELECT j FROM Jurusan j")
     , @NamedQuery(name = "Jurusan.findById", query = "SELECT j FROM Jurusan j WHERE j.id = :id")
     , @NamedQuery(name = "Jurusan.findByNama", query = "SELECT j FROM Jurusan j WHERE j.nama = :nama")
-})
+    , @NamedQuery(name = "Jurusan.findByFakultas", query = "SELECT j FROM Jurusan j WHERE j.fakultas = :fakultas")})
 public class Jurusan implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 35)
+    @Size(min = 1, max = 45)
     @Column(name = "id")
     private String id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 35)
     @Column(name = "nama")
     private String nama;
+    @Size(max = 5)
+    @Column(name = "fakultas")
+    private String fakultas;
 
     public Jurusan() {
     }
 
     public Jurusan(String id) {
         this.id = id;
-    }
-
-    public Jurusan(String id, String nama) {
-        this.id = id;
-        this.nama = nama;
     }
 
     public String getId() {
@@ -70,6 +66,14 @@ public class Jurusan implements Serializable {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getFakultas() {
+        return fakultas;
+    }
+
+    public void setFakultas(String fakultas) {
+        this.fakultas = fakultas;
     }
 
     @Override

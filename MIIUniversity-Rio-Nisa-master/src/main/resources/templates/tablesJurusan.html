@@ -153,6 +153,7 @@
                                                             <tr>
                                                                 <th>ID</th>
                                                                 <th>Jurusan</th>
+                                                                <th>Fakultas</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead> 
@@ -160,6 +161,7 @@
                                                             <tr th:each ="j: ${jurusans}">
                                                                 <td th:text= "${j.id}">ID</td>
                                                                 <td th:text= "${j.nama}">nama</td>
+                                                                <td th:text= "${j.fakultas}">nama</td>
 
                                                                 <td> 
                                                                     <button class="btn btn-secondary open-update" 
@@ -203,6 +205,9 @@
 
                                     <h3 class="text-primary" style="font-size:20px;">Jurusan Name</h3>
                                     <p><input type="text" nama="textName" id="textName" class ="form-control" th:field="*{nama}"  required></p>
+                                    
+                                    <h3 class="text-primary" style="font-size:20px;">Jurusan Fakultas</h3>
+                                    <p><input type="text" nama="textFakultas" id="textFakultas" class ="form-control" th:field="*{fakultas}"  required></p> 
 
                             </div>
                             <div class="modal-footer">
@@ -228,9 +233,11 @@
                                     <h3 class="text-primary" style="font-size:20px;">Jurusan ID</h3>
                                     <p><input type="text" nama="textId" id="textId" class ="form-control" th:field="*{id}"  readonly></p>
 
-                                    <h3 class="text-primary" style="font-size:20px;">Jurusan Name</h3>
+                                    <h3 class="text-primary" style="font-size:20px;">Jurusan Nama</h3>
                                     <p><input type="text" nama="textName" id="textName" class ="form-control" th:field="*{nama}"  required></p>
-
+                                    
+                                    <h3 class="text-primary" style="font-size:20px;">Jurusan Fakultas</h3>
+                                    <p><input type="text" nama="textFakultas" id="textFakultas" class ="form-control" th:field="*{fakultas}"  required></p> 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
